@@ -39,7 +39,8 @@ INNER JOIN dept_emp de
 ON de.emp_no = e.emp_no
 INNER JOIN departments d
 ON d.dept_no = de.dept_no
-WHERE d.dept_name = 'Sales';
+WHERE d.dept_name = 'Sales'
+AND de.to_date > CURRENT_TIMESTAMP;
 
 -- 7.
 SELECT e.emp_no AS "employee number", e.last_name AS "last name", e.first_name AS "first name", d.dept_name AS "department name"
@@ -48,8 +49,8 @@ INNER JOIN dept_emp de
 ON de.emp_no = e.emp_no
 INNER JOIN departments d
 ON d.dept_no = de.dept_no
-WHERE d.dept_name = 'Sales'
-OR d.dept_name = 'Development';
+WHERE (d.dept_name = 'Sales' OR d.dept_name = 'Development')
+AND de.to_date > CURRENT_TIMESTAMP;
 
 -- 8.
 SELECT last_name, COUNT(last_name) AS "frequency count of last name"
